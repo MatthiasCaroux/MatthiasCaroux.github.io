@@ -7,7 +7,6 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-
     background-color: #f8f8f8;
 }
 
@@ -28,6 +27,8 @@ header h1 {
 
 header div {
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 a {
@@ -39,6 +40,7 @@ a {
 header img {
     width: 200px;
     height: auto;
+    margin: 1em 0;
 }
 
 header p {
@@ -73,10 +75,9 @@ header button:hover a {
     background-color: #ffffff;
     padding-left: 300px;
     padding-right: 300px;
-
 }
 
-#projects, #features{
+#projects, #features {
     background-color: aliceblue;
 }
 
@@ -118,4 +119,60 @@ footer button:hover {
 
 p {
     font-size: 1.5em;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    header, .feature {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    header, .feature {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+        text-align: center;
+    }
+    
+    header div {
+        flex-direction: column;
+    }
+    
+    header p, .feature p {
+        font-size: 1em;
+    }
+    
+    header button, footer button {
+        width: 100%;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    header, .feature {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    header p, .feature p {
+        font-size: 0.9em;
+    }
+    
+    header button, footer button {
+        padding: 0.5em 1em;
+    }
+    
+    p {
+        font-size: 1em;
+    }
 }
