@@ -1,0 +1,78 @@
+<script setup lang="ts">
+const nuxtApp = useNuxtApp()
+const { activeHeadings, updateHeadings } = useScrollspy()
+
+const links = computed(() => [{
+  label: 'Fonctionnalités',
+  to: '#features',
+  icon: 'i-heroicons-cube-transparent',
+  active: activeHeadings.value.includes('features') && !activeHeadings.value.includes('pricing')
+}, {
+  label: 'Tarification',
+  to: '#pricing',
+  icon: 'i-heroicons-credit-card',
+  active: activeHeadings.value.includes('pricing') && !activeHeadings.value.includes('testimonials')
+}, {
+  label: 'Témoignages',
+  to: '#testimonials',
+  icon: 'i-heroicons-academic-cap',
+  active: activeHeadings.value.includes('testimonials')
+}, {
+  label: 'FAQ',
+  to: '#faq',
+  icon: 'i-heroicons-question-mark-circle',
+  active: activeHeadings.value.includes('faq')
+}])
+
+nuxtApp.hooks.hookOnce('page:finish', () => {
+  updateHeadings([
+    document.querySelector('#features'),
+    document.querySelector('#pricing'),
+    document.querySelector('#testimonials'),
+    document.querySelector('#faq')
+  ])
+})
+</script>
+
+<template>
+  <UHeader :links="links">
+    <template #logo>
+      <div class="flex items-center">
+        <img
+          src="/logo.png"
+          alt="DexApp Logo"
+          class="h-8 w-auto mr-2"
+        >
+        DexApp
+      </div>
+    </template>
+
+    <template #right>
+      <UButton
+        label="Télécharger"
+        color="white"
+        variant="ghost"
+        trailing-icon="i-heroicons-arrow-right-20-solid"
+        class="hidden lg:flex"
+        to="https://github.com/MatthiasCaroux/StartAppInstaller"
+      />
+    </template>
+
+    <template #panel>
+      <UAsideLinks :links="links" />
+
+      <UDivider class="my-6" />
+
+      <UButton
+        label="Sign in"
+        color="white"
+        block
+        class="mb-3"
+      />
+      <UButton
+        label="Get started"
+        block
+      />
+    </template>
+  </UHeader>
+</template>
