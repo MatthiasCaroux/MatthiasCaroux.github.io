@@ -124,3 +124,23 @@
     margin-top: 2rem;
   }
   
+
+  /* À la fin de style.css */
+@media (max-width: 768px) {
+  /* La barre de nav elle-même passe en colonne */
+  nav {
+    flex-direction: column;       /* place la marque et la liste l'une en dessous de l'autre */
+    align-items: flex-start;      /* aligne le contenu à gauche */
+  }
+
+  .nav-links {
+    display: block;              /* passe de flex -> block */
+    margin-top: 1rem;            /* petit écart au-dessus de la liste */
+  }
+
+  /* Chaque lien s'affiche sur une nouvelle ligne */
+  .nav-links li a {
+    display: block;             
+    margin-bottom: 0.5rem;      /* espacement entre les liens */
+  }
+}
